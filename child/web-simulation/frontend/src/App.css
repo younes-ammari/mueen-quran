@@ -1,0 +1,441 @@
+/* Import the Tajawal font from local assets */
+@font-face {
+  font-family: 'Tajawal';
+  src: url('./assets/fonts/Tajawal-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  src: url('./assets/fonts/Tajawal-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.app-wrapper {
+  background-color: red !important;
+}
+
+
+.canvas-wrapper {
+  background: radial-gradient(circle, #150606, #0e0303, #000000);
+  background-color: #ffffff;
+  /* padding-top: 5rem !important; */
+  position: relative;
+}
+
+.text-wrapper {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 7px;
+
+  * {
+    margin: 0px;
+  }
+}
+
+.text-wrapper h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: 'Tajawal', Arial, sans-serif;
+}
+
+.text-wrapper p {
+  color: #ffffff;
+  font-family: 'Tajawal', Arial, sans-serif;
+}
+
+* {
+  font-family: 'Arial', Times, serif;
+  text-rendering: optimizeLegibility;
+}
+
+.floating-chat {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.result-container {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  width: 80%;
+  padding: 2px 0px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  /* padding: 12px 24px; */
+  display: inline-block;
+  backdrop-filter: blur(4px);
+}
+
+.result {
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: 'Tajawal', Arial, sans-serif;
+  animation: fadeInOut 4s ease-in-out infinite;
+}
+
+.message-container {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  padding: 12px 24px;
+  display: inline-block;
+  max-width: 80%;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message {
+  color: #fff;
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: 'Tajawal', Arial, sans-serif;
+  animation: fadeInOut 4s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.floating-result * {
+  color: #ffffff;
+  font-family: 'Tajawal', Arial, sans-serif;
+}
+
+.floating-result {
+  user-select: none;
+  /* Disable text selection */
+  width: 300px;
+  height: 245px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px 1px;
+  margin-right: 8px;
+  margin-top: 16px;
+  justify-content: center;
+  /* background-color: red; */
+  background-color: #eaeaea;
+  /* position: absolute; */
+  /* z-index: 1000; */
+  /* bottom: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, 50%); Center horizontally and vertically */
+  /* padding: 20px; */
+  /* background-color: red; */
+}
+
+.text-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+.comparison-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  /* For RTL text alignment */
+}
+
+.label {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.text {
+  direction: rtl;
+  /* For Arabic text */
+  font-size: 1.2rem;
+  text-align: center;
+  /* Add these properties for better Arabic text handling */
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+.correct-letter {
+  color: green;
+}
+
+.wrong-letter {
+  color: red;
+}
+
+.correct-word {
+  /* Optional: style for fully correct words */
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.wrong-word {
+  /* Optional: style for words with errors */
+  background-color: rgba(255, 0, 0, 0.1);
+}
+/* 
+.correct-word {
+  color: white;
+}
+
+.wrong-word {
+  color: #ff4444;
+}
+
+.correct-char {
+  color: green;
+}
+
+.wrong-char {
+  color: red;
+  text-decoration: line-through;
+} */
+
+.missing-char {
+  color: orange;
+  opacity: 0.7;
+}
+
+.extra-char {
+  color: red;
+  text-decoration: line-through;
+}
+
+.word {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.floating-result .text-comparison {
+  text-align: right;
+  direction: rtl;
+  /* Add these properties for better text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add specific Arabic text container styles */
+[lang="ar"] {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+
+.face-expressions-container {
+  user-select: none;
+  z-index: 1000;
+  width: 177px;
+  padding-right: 10px !important;
+  height: 139px;
+}
+
+.face-expressions {
+  background-color: black !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 10px; */
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  border-radius: 66px;
+}
+
+.face-expressions p {
+  color: white;
+}
+
+.face-container {
+  /* background: transparent; */
+  /* background-color: black; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.eyes {
+  display: flex;
+  gap: 30px;
+  flex: content;
+}
+
+.eye {
+  width: 40px;
+  height: 40px;
+  background: #ffd1dc;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: blinking 4s infinite;
+}
+
+/* Add pupil styling */
+.eye::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: lookAround 3s infinite;
+}
+
+.mouth {
+  width: 80px;
+  height: 22px;
+  background: #ffd1dc;
+  border-radius: 0 0 99px 99px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  position: relative;
+}
+
+.mouth.talking {
+  animation: mouthTalking 0.6s infinite;
+}
+
+/* New animations */
+@keyframes blinking {
+  0%, 96%, 98% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes lookAround {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-30%, -50%); }
+  50% { transform: translate(-50%, -30%); }
+  75% { transform: translate(-70%, -50%); }
+}
+
+@keyframes mouthTalking {
+  0% {
+    height: 22px;
+    border-radius: 0 0 99px 99px;
+  }
+  50% {
+    height: 15px;
+    border-radius: 99px;
+  }
+  100% {
+    height: 22px;
+    border-radius: 0 0 99px 99px;
+  }
+}
+
+.mouth-container {
+  display: flex;
+  align-items: center;
+  height: 38px !important;
+  justify-content: center;
+  perspective: 100px;
+  /* Adds depth to the animation */
+}
+
+.floating-result-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none; /* This allows clicking through to the 3D canvas */
+}
+
+.missing-word {
+  background-color: rgba(255, 165, 0, 0.1); /* Orange tint */
+  opacity: 0.7;
+}
+
+.extra-word {
+  background-color: rgba(128, 0, 128, 0.1); /* Purple tint */
+  text-decoration: line-through;
+}
+
+.missing-letter {
+  color: orange;
+  opacity: 0.7;
+}
+
+.extra-letter {
+  color: purple;
+  text-decoration: line-through;
+}
+
+.navigation-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.prev-button {
+  background-color: #6c757d;
+}
+
+.prev-button:hover {
+  background-color: #545b62;
+}
